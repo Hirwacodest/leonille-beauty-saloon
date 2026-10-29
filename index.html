@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leonille Beauty Saloon | Premium Salon in Rwanda</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                            emerald: '#1b5e20',
+                            sage: '#2e7d32',
+                            soft: '#e8f5e9'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        h1, h2, h3, .font-heading {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2e7d32;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 antialiased flex flex-col min-h-screen">
+
+    <!-- Top Announcement / Quick Info Bar -->
+    <div class="bg-brand-900 text-white text-xs sm:text-sm py-2 px-4 text-center flex justify-between items-center max-w-full overflow-hidden">
+        <div class="container mx-auto flex justify-between items-center">
+            <span class="flex items-center gap-2">
+                <i class="fa-solid fa-location-dot text-brand-200"></i>
+                <span class="hidden sm:inline">Located in</span> Rwanda
+            </span>
+            <span class="flex items-center gap-2">
+                <i class="fa-solid fa-clock text-brand-200"></i>
+                Mon - Sat: 8:00 AM - 8:00 PM | Sun: 10:00 AM - 6:00 PM
+            </span>
+            <a href="https://wa.me/250781128904" target="_blank" class="hidden md:flex items-center gap-1 hover:text-brand-200 transition">
+                <i class="fa-brands fa-whatsapp"></i> +250 781 128 904
+            </a>
+        </div>
+    </div>
+
+    <!-- Sticky Navigation Bar -->
+    <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-brand-100 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#home" class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-brand-700 text-white flex items-center justify-center text-xl font-bold font-serif shadow-md">
+                        L
+                    </div>
+                    <div>
+                        <span class="text-xl sm:text-2xl font-bold text-brand-900 font-serif tracking-tight block">Leonille</span>
+                        <span class="text-xs uppercase tracking-widest text-brand-700 font-semibold block -mt-1">Beauty Saloon</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center space-x-8 font-medium text-gray-700">
+                    <a href="#home" class="hover:text-brand-700 transition-colors">Home</a>
+                    <a href="#services" class="hover:text-brand-700 transition-colors">Services & Pricing</a>
+                    <a href="#gallery" class="hover:text-brand-700 transition-colors">Gallery</a>
+                    <a href="#contact" class="hover:text-brand-700 transition-colors">Contact</a>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="https://wa.me/250781128904?text=Hello%20Leonille%20Beauty%20Saloon,%20I%20would%20like%20to%20book%20an%20appointment." 
+                       target="_blank" 
+                       class="bg-brand-700 hover:bg-brand-800 text-white px-5 py-2.5 rounded-full font-medium shadow-md hover:shadow-lg transition flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Book on WhatsApp</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <button id="mobile-menu-btn" type="button" class="md:hidden text-gray-700 hover:text-brand-700 focus:outline-none p-2" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-6 space-y-3 shadow-lg">
+            <a href="#home" class="block py-2 text-gray-700 hover:text-brand-700 font-medium border-b border-gray-100">Home</a>
+            <a href="#services" class="block py-2 text-gray-700 hover:text-brand-700 font-medium border-b border-gray-100">Services & Pricing</a>
+            <a href="#gallery" class="block py-2 text-gray-700 hover:text-brand-700 font-medium border-b border-gray-100">Gallery</a>
+            <a href="#contact" class="block py-2 text-gray-700 hover:text-brand-700 font-medium border-b border-gray-100">Contact Us</a>
+            <a href="https://wa.me/250781128904?text=Hello%20Leonille%20Beauty%20Saloon,%20I%20would%20like%20to%20book%20an%20appointment." 
+               target="_blank" 
+               class="w-full bg-brand-700 hover:bg-brand-800 text-white py-3 rounded-xl font-medium text-center flex items-center justify-center gap-2 shadow mt-4">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+                <span>Book on WhatsApp</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+
+        <!-- Hero Section -->
+        <section id="home" class="relative bg-gradient-to-b from-brand-soft via-white to-white py-16 lg:py-24 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Text Content -->
+                    <div class="lg:col-span-7 text-center lg:text-left">
+                        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-brand-100 text-brand-800 mb-4 border border-brand-200">
+                            <i class="fa-solid fa-sparkles text-brand-600"></i> Premier Beauty Salon in Rwanda
+                        </span>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                            Enhance Your Natural Beauty & Radiance
+                        </h1>
+                        <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                            Welcome to <strong>Leonille Beauty Saloon</strong>. We specialize in luxury hair styling, professional braiding, glowing facial treatments, elegant manicures, and complete bridal makeovers tailored just for you.
+                        </p>
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                            <a href="https://wa.me/250781128904?text=Hello%20Leonille%20Beauty%20Saloon,%20I%20would%20like%20to%20book%20a%20beauty%20session." 
+                               target="_blank" 
+                               class="w-full sm:w-auto bg-brand-700 hover:bg-brand-800 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+                                <i class="fa-brands fa-whatsapp text-2xl"></i>
+                                <span>Book via WhatsApp</span>
+                            </a>
+                            <a href="#services" class="w-full sm:w-auto bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 px-8 py-4 rounded-full font-semibold text-lg transition text-center shadow-sm">
+                                View Services & Prices
+                            </a>
+                        </div>
+
+                        <!-- Trust Badges -->
+                        <div class="mt-10 pt-8 border-t border-gray-200 grid grid-cols-3 gap-4 text-center lg:text-left">
+                            <div>
+                                <p class="text-2xl font-bold text-brand-800 font-serif">100%</p>
+                                <p class="text-xs text-gray-500 font-medium">Customer Care</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-bold text-brand-800 font-serif">5★</p>
+                                <p class="text-xs text-gray-500 font-medium">Top Rated Service</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-bold text-brand-800 font-serif">Rwanda</p>
+                                <p class="text-xs text-gray-500 font-medium">Prime Location</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hero Visual / Cards -->
+                    <div class="lg:col-span-5 relative">
+                        <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white">
+                            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1000&q=80" 
+                                 alt="Leonille Beauty Saloon Interior" 
+                                 class="w-full h-[450px] object-cover hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-6">
+                                <div class="text-white">
+                                    <p class="font-serif text-xl font-bold">Experience Perfection</p>
+                                    <p class="text-sm text-gray-200">Relax in our welcoming, hygienic, and modern salon environment.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Card -->
+                        <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 hidden sm:flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-scissors"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-gray-900">Expert Stylists</p>
+                                <p class="text-xs text-gray-500">Professional hair & beauty care</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Services & Price Configurator Section -->
+        <section id="services" class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-brand-700 font-semibold uppercase tracking-wider text-sm">Our Care Menu</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mt-2 mb-4">Services & Pricing</h2>
+                    <p class="text-gray-600">Choose from our premium beauty packages. Prices are listed in Rwandan Francs (RWF).</p>
+                    
+                    <!-- Admin Edit Prices Switch Toggle -->
+                    <div class="mt-6 inline-flex items-center gap-3 bg-white px-4 py-2 rounded-full shadow-sm border border-gray-200">
+                        <span class="text-xs font-semibold text-gray-600">Salon Admin Mode:</span>
+                        <button id="toggle-edit-btn" onclick="toggleEditPrices()" class="text-xs bg-brand-100 hover:bg-brand-200 text-brand-800 font-bold px-3 py-1 rounded-full transition flex items-center gap-1">
+                            <i class="fa-solid fa-pen-to-square"></i> <span id="edit-btn-text">Edit Prices</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Search and Category Filter -->
+                <div class="mb-10 flex flex-col md:flex-row justify-between items-center gap-4 bg-white p-4 rounded-2xl shadow-sm border border-gray-200">
+                    
+                    <!-- Search Input -->
+                    <div class="relative w-full md:w-80">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-gray-400"></i>
+                        <input type="text" id="search-input" onkeyup="filterServices()" placeholder="Search service (e.g. Braids, Facial)..." 
+                               class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-sm">
+                    </div>
+
+                    <!-- Category Filter Buttons -->
+                    <div class="flex flex-wrap gap-2 w-full md:w-auto justify-start md:justify-end" id="category-filters">
+                        <button onclick="filterCategory('all')" class="cat-btn active bg-brand-700 text-white px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition">All</button>
+                        <button onclick="filterCategory('hair')" class="cat-btn bg-gray-100 text-gray-700 hover:bg-brand-50 px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition">Hair Styling</button>
+                        <button onclick="filterCategory('nails')" class="cat-btn bg-gray-100 text-gray-700 hover:bg-brand-50 px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition">Nails</button>
+                        <button onclick="filterCategory('facial')" class="cat-btn bg-gray-100 text-gray-700 hover:bg-brand-50 px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition">Facials & Spa</button>
+                        <button onclick="filterCategory('makeup')" class="cat-btn bg-gray-100 text-gray-700 hover:bg-brand-50 px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition">Makeup & Bridal</button>
+                    </div>
+                </div>
+
+                <!-- Service Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="services-grid">
+                    <!-- Dynamic JavaScript Rendering -->
+                </div>
+
+                <!-- Admin Notification Message -->
+                <div id="save-msg" class="hidden fixed bottom-6 right-6 bg-brand-800 text-white px-6 py-3 rounded-xl shadow-2xl z-50 flex items-center gap-3">
+                    <i class="fa-solid fa-circle-check text-brand-200 text-xl"></i>
+                    <span>Prices updated and saved to your browser!</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Photo Gallery Section -->
+        <section id="gallery" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-14">
+                    <span class="text-brand-700 font-semibold uppercase tracking-wider text-sm">Visual Showcase</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mt-2 mb-4">Salon Work & Ambiance</h2>
+                    <p class="text-gray-600">Take a peek at our recent transformations, nail art, hair styles, and cozy interior.</p>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                    
+                    <div class="relative group overflow-hidden rounded-2xl bg-gray-100 cursor-pointer shadow-sm hover:shadow-md transition" onclick="openLightbox('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1000&q=80', 'Elegant Hair Styling')">
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80" alt="Hair Styling" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-brand-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white p-4 text-center">
+                            <div>
+                                <i class="fa-solid fa-magnifying-glass-plus text-2xl mb-2"></i>
+                                <p class="font-semibold text-sm">Hair Styling & Care</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative group overflow-hidden rounded-2xl bg-gray-100 cursor-pointer shadow-sm hover:shadow-md transition" onclick="openLightbox('https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=1000&q=80', 'Luxury Manicure Art')">
+                        <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=600&q=80" alt="Manicure" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-brand-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white p-4 text-center">
+                            <div>
+                                <i class="fa-solid fa-magnifying-glass-plus text-2xl mb-2"></i>
+                                <p class="font-semibold text-sm">Luxury Nails</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative group overflow-hidden rounded-2xl bg-gray-100 cursor-pointer shadow-sm hover:shadow-md transition" onclick="openLightbox('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1000&q=80', 'Glowing Facial Treatments')">
+                        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80" alt="Facial Care" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-brand-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white p-4 text-center">
+                            <div>
+                                <i class="fa-solid fa-magnifying-glass-plus text-2xl mb-2"></i>
+                                <p class="font-semibold text-sm">Relaxing Facials</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative group overflow-hidden rounded-2xl bg-gray-100 cursor-pointer shadow-sm hover:shadow-md transition" onclick="openLightbox('https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1000&q=80', 'Professional Bridal Makeup')">
+                        <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80" alt="Makeup" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-brand-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white p-4 text-center">
+                            <div>
+                                <i class="fa-solid fa-magnifying-glass-plus text-2xl mb-2"></i>
+                                <p class="font-semibold text-sm">Bridal Makeup</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative group overflow-hidden rounded-2xl bg-gray-100 cursor-pointer shadow-sm hover:shadow-md transition" onclick="openLightbox('https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=1000&q=80', 'Skin & Facial Therapy')">
+                        <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=600&q=80" alt="Skincare" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-brand-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white p-4 text-center">
+                            <div>
+                                <i class="fa-solid fa-magnifying-glass-plus text-2xl mb-2"></i>
+                                <p class="font-semibold text-sm">Glow Skin Care</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative group overflow-hidden rounded-2xl bg-gray-100 cursor-pointer shadow-sm hover:shadow-md transition" onclick="openLightbox('https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?auto=format&fit=crop&w=1000&q=80', 'Trendy Hair Braiding')">
+                        <img src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?auto=format&fit=crop&w=600&q=80" alt="Braids" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-brand-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white p-4 text-center">
+                            <div>
+                                <i class="fa-solid fa-magnifying-glass-plus text-2xl mb-2"></i>
+                                <p class="font-semibold text-sm">Braiding & Twists</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative group overflow-hidden rounded-2xl bg-gray-100 cursor-pointer shadow-sm hover:shadow-md transition" onclick="openLightbox('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=80', 'Relaxing Head & Body Massage')">
+                        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80" alt="Massage Therapy" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-brand-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white p-4 text-center">
+                            <div>
+                                <i class="fa-solid fa-magnifying-glass-plus text-2xl mb-2"></i>
+                                <p class="font-semibold text-sm">Spa & Massage</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative group overflow-hidden rounded-2xl bg-gray-100 cursor-pointer shadow-sm hover:shadow-md transition" onclick="openLightbox('https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=1000&q=80', 'Chic Pedicure & Foot Care')">
+                        <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=600&q=80" alt="Pedicure" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-brand-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white p-4 text-center">
+                            <div>
+                                <i class="fa-solid fa-magnifying-glass-plus text-2xl mb-2"></i>
+                                <p class="font-semibold text-sm">Pedicure Care</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Lightbox Modal -->
+        <div id="lightbox" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4">
+            <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white hover:text-brand-200 text-3xl focus:outline-none">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="max-w-4xl w-full text-center">
+                <img id="lightbox-img" src="" alt="Enlarged gallery view" class="max-h-[80vh] mx-auto rounded-xl shadow-2xl object-contain">
+                <p id="lightbox-caption" class="text-white mt-4 font-serif text-lg font-medium"></p>
+            </div>
+        </div>
+
+        <!-- Contact & Interactive WhatsApp Booking Section -->
+        <section id="contact" class="py-20 bg-brand-soft/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    
+                    <!-- Contact Details & Info -->
+                    <div class="lg:col-span-5 flex flex-col justify-between">
+                        <div>
+                            <span class="text-brand-700 font-semibold uppercase tracking-wider text-sm">Get in Touch</span>
+                            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mt-2 mb-6">Visit or Contact Us</h2>
+                            <p class="text-gray-600 mb-8 leading-relaxed">
+                                We look forward to treating you to exceptional beauty services in a peaceful, welcoming environment. Book through our direct WhatsApp link or contact form below.
+                            </p>
+
+                            <!-- Information Cards -->
+                            <div class="space-y-6">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-12 h-12 rounded-2xl bg-white shadow-sm border border-brand-100 flex items-center justify-center text-brand-700 shrink-0 text-xl">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900">Salon Location</h4>
+                                        <p class="text-sm text-gray-600">Leonille Beauty Saloon, Kigali / Rwanda</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div class="w-12 h-12 rounded-2xl bg-white shadow-sm border border-brand-100 flex items-center justify-center text-brand-700 shrink-0 text-xl">
+                                        <i class="fa-brands fa-whatsapp"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900">Phone & WhatsApp</h4>
+                                        <a href="https://wa.me/250781128904" target="_blank" class="text-sm text-brand-700 hover:underline font-medium">
+                                            0781128904 (+250 781 128 904)
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div class="w-12 h-12 rounded-2xl bg-white shadow-sm border border-brand-100 flex items-center justify-center text-brand-700 shrink-0 text-xl">
+                                        <i class="fa-regular fa-clock"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900">Working Hours</h4>
+                                        <p class="text-sm text-gray-600">Monday - Saturday: 8:00 AM - 8:00 PM</p>
+                                        <p class="text-sm text-gray-600">Sunday: 10:00 AM - 6:00 PM</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Location Directions Card / Placeholder Map -->
+                        <div class="mt-8 p-6 bg-white rounded-2xl border border-gray-200 shadow-sm relative overflow-hidden">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="font-bold text-gray-800 text-sm flex items-center gap-2">
+                                    <i class="fa-solid fa-map-location-dot text-brand-600"></i> Map Location
+                                </span>
+                                <span class="text-xs bg-brand-100 text-brand-800 font-semibold px-2.5 py-1 rounded-full">Rwanda</span>
+                            </div>
+                            <p class="text-xs text-gray-500 mb-4">Easily accessible salon location with ample parking space for our clients.</p>
+                            <a href="https://maps.google.com/?q=Rwanda" target="_blank" class="inline-flex items-center gap-2 text-xs font-semibold text-brand-700 hover:text-brand-800">
+                                Open in Google Maps <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <!-- Interactive WhatsApp Booking Form -->
+                    <div class="lg:col-span-7">
+                        <div class="bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
+                            <div class="mb-6">
+                                <h3 class="text-2xl font-bold text-gray-900 font-serif">Quick WhatsApp Booking</h3>
+                                <p class="text-sm text-gray-500 mt-1">Fill out the form below to auto-generate your instant WhatsApp booking request.</p>
+                            </div>
+
+                            <form id="booking-form" onsubmit="handleBookingSubmit(event)" class="space-y-5">
+                                <div>
+                                    <label for="book-name" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Your Full Name *</label>
+                                    <input type="text" id="book-name" required placeholder="e.g. Marie Claire" 
+                                           class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm">
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="book-service" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Select Service *</label>
+                                        <select id="book-service" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm bg-white">
+                                            <option value="" disabled selected>Choose a service...</option>
+                                            <option value="Hair Styling & Braids">Hair Styling & Braiding</option>
+                                            <option value="Deluxe Pedicure & Manicure">Deluxe Pedicure & Manicure</option>
+                                            <option value="Glow Facial Treatment">Glow Facial Treatment</option>
+                                            <option value="Bridal & Glam Makeup">Bridal & Glam Makeup</option>
+                                            <option value="Relaxing Full Body Massage">Relaxing Massage</option>
+                                            <option value="Other / General Consultation">Other Service</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="book-phone" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Your Phone Number</label>
+                                        <input type="tel" id="book-phone" placeholder="078... or +250..." 
+                                               class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="book-date" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Preferred Date *</label>
+                                        <input type="date" id="book-date" required 
+                                               class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm">
+                                    </div>
+                                    <div>
+                                        <label for="book-time" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Preferred Time *</label>
+                                        <input type="time" id="book-time" required 
+                                               class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="book-notes" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Additional Notes / Preferences</label>
+                                    <textarea id="book-notes" rows="3" placeholder="Tell us if you have special requests or photos of styles you like..." 
+                                              class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 text-sm"></textarea>
+                                </div>
+
+                                <button type="submit" class="w-full bg-brand-700 hover:bg-brand-800 text-white font-semibold py-4 rounded-xl shadow-lg hover:shadow-xl transition flex items-center justify-center gap-3 text-base">
+                                    <i class="fa-brands fa-whatsapp text-2xl"></i>
+                                    <span>Send WhatsApp Booking</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-900 text-white pt-16 pb-8 border-t border-brand-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-brand-800">
+                
+                <!-- Col 1: Brand -->
+                <div class="space-y-4 md:col-span-1">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-brand-500 text-white flex items-center justify-center text-lg font-bold font-serif">
+                            L
+                        </div>
+                        <span class="text-xl font-serif font-bold text-white tracking-wide">Leonille Saloon</span>
+                    </div>
+                    <p class="text-xs text-brand-200 leading-relaxed">
+                        Your trusted destination for hair, nail, facial, and bridal beauty services in Rwanda. Beautiful results, every time.
+                    </p>
+                </div>
+
+                <!-- Col 2: Navigation Links -->
+                <div>
+                    <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-xs text-brand-200">
+                        <li><a href="#home" class="hover:text-white transition">Home</a></li>
+                        <li><a href="#services" class="hover:text-white transition">Services & Prices</a></li>
+                        <li><a href="#gallery" class="hover:text-white transition">Photo Gallery</a></li>
+                        <li><a href="#contact" class="hover:text-white transition">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Services -->
+                <div>
+                    <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Popular Services</h4>
+                    <ul class="space-y-2 text-xs text-brand-200">
+                        <li>Hair Braiding & Weaving</li>
+                        <li>Gel Manicure & Pedicure</li>
+                        <li>Deep Cleansing Facial</li>
+                        <li>Bridal Glam & Makeup</li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Contact Info -->
+                <div>
+                    <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Direct Contact</h4>
+                    <ul class="space-y-2 text-xs text-brand-200">
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-brand-500"></i> 0781128904
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-brand-500"></i> +250 781 128 904
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot text-brand-500"></i> Rwanda
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-brand-200">
+                <p>&copy; <span id="current-year"></span> Leonille Beauty Saloon. All rights reserved.</p>
+                <p class="mt-2 sm:mt-0">Designed for beauty & elegance in Rwanda.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Set copyright year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Default Services Data (Stored in LocalStorage if edited)
+        const defaultServices = [
+            {
+                id: 's1',
+                category: 'hair',
+                name: 'Knotless Braids & Box Braids',
+                desc: 'Neat, lightweight braids styled to perfection with gentle scalp treatment.',
+                price: 15000,
+                icon: 'fa-scissors',
+                image: 'https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?auto=format&fit=crop&w=600&q=80'
+            },
+            {
+                id: 's2',
+                category: 'hair',
+                name: 'Hair Wash, Blowdry & Treatment',
+                desc: 'Deep conditioning scalp wash, blowdry styling, and moisturizing oils.',
+                price: 10000,
+                icon: 'fa-wind',
+                image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80'
+            },
+            {
+                id: 's3',
+                category: 'nails',
+                name: 'Deluxe Gel Pedicure & Scrub',
+                desc: 'Exfoliating foot scrub, nail shaping, cuticle care, and long-lasting gel polish.',
+                price: 12000,
+                icon: 'fa-gem',
+                image: 'https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=600&q=80'
+            },
+            {
+                id: 's4',
+                category: 'nails',
+                name: 'Classic Gel Manicure',
+                desc: 'Nail cleanup, shaping, massage, and high-shine durable gel color.',
+                price: 8000,
+                icon: 'fa-hand-sparkles',
+                image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=600&q=80'
+            },
+            {
+                id: 's5',
+                category: 'facial',
+                name: 'Deep Cleansing Glow Facial',
+                desc: 'Pore cleansing, gentle steam, facial scrub, hydration mask, and relaxing face massage.',
+                price: 20000,
+                icon: 'fa-spa',
+                image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80'
+            },
+            {
+                id: 's6',
+                category: 'makeup',
+                name: 'Bridal & Special Event Makeup',
+                desc: 'Flawless camera-ready makeup with premium products, including lashes.',
+                price: 30000,
+                icon: 'fa-wand-magic-sparkles',
+                image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80'
+            }
+        ];
+
+        let services = [];
+        let isEditMode = false;
+        let activeCategory = 'all';
+
+        // Load prices from localStorage or set default
+        function loadServices() {
+            const saved = localStorage.getItem('leonille_salon_services');
+            if (saved) {
+                try {
+                    services = JSON.parse(saved);
+                } catch(e) {
+                    services = [...defaultServices];
+                }
+            } else {
+                services = [...defaultServices];
+            }
+            renderServices();
+        }
+
+        // Render Services Grid
+        function renderServices() {
+            const grid = document.getElementById('services-grid');
+            grid.innerHTML = '';
+
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+
+            const filtered = services.filter(service => {
+                const matchesCat = (activeCategory === 'all' || service.category === activeCategory);
+                const matchesSearch = service.name.toLowerCase().includes(searchTerm) || service.desc.toLowerCase().includes(searchTerm);
+                return matchesCat && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 bg-white rounded-2xl border border-dashed border-gray-300">
+                        <i class="fa-solid fa-magnifying-glass text-4xl text-gray-300 mb-3"></i>
+                        <p class="text-gray-600 font-medium">No services found matching your search.</p>
+                        <button onclick="resetFilters()" class="mt-3 text-xs bg-brand-100 text-brand-800 font-bold px-4 py-2 rounded-xl">Clear Search</button>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(service => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col justify-between group';
+
+                const formattedPrice = service.price.toLocaleString();
+                const waMessage = encodeURIComponent(`Hello Leonille Beauty Saloon, I would like to book the "${service.name}" service (RWF ${formattedPrice}).`);
+
+                card.innerHTML = `
+                    <div>
+                        <div class="relative h-48 overflow-hidden bg-gray-100">
+                            <img src="${service.image}" alt="${service.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <span class="absolute top-4 right-4 bg-white/90 backdrop-blur-md text-brand-900 font-bold px-3 py-1.5 rounded-full text-sm shadow-sm border border-brand-100 flex items-center gap-1">
+                                <span class="text-xs text-brand-600">RWF</span> 
+                                <span id="price-display-${service.id}">${formattedPrice}</span>
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 font-serif mb-2">${service.name}</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4">${service.desc}</p>
+                            
+                            <!-- Price Editing Field (Visible only in Admin Mode) -->
+                            <div id="edit-box-${service.id}" class="${isEditMode ? 'block' : 'hidden'} mt-3 p-3 bg-brand-50 rounded-xl border border-brand-200 mb-4">
+                                <label class="block text-xs font-bold text-brand-900 mb-1">Update Price (RWF):</label>
+                                <div class="flex gap-2">
+                                    <input type="number" id="input-price-${service.id}" value="${service.price}" class="w-full px-3 py-1.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-brand-600">
+                                    <button onclick="saveSinglePrice('${service.id}')" class="bg-brand-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold hover:bg-brand-800">
+                                        Save
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0">
+                        <a href="https://wa.me/250781128904?text=${waMessage}" 
+                           target="_blank" 
+                           class="w-full bg-brand-100 hover:bg-brand-700 text-brand-900 hover:text-white py-3 rounded-2xl font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-2 group-hover:bg-brand-700 group-hover:text-white shadow-sm">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>Book This Service</span>
+                        </a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Toggle Price Edit Mode
+        function toggleEditPrices() {
+            isEditMode = !isEditMode;
+            document.getElementById('edit-btn-text').textContent = isEditMode ? 'Done Editing' : 'Edit Prices';
+            renderServices();
+        }
+
+        // Save Single Price Change
+        function saveSinglePrice(serviceId) {
+            const input = document.getElementById(`input-price-${serviceId}`);
+            const newPrice = parseInt(input.value, 10);
+            
+            if (isNaN(newPrice) || newPrice < 0) {
+                alert('Please enter a valid price in RWF.');
+                return;
+            }
+
+            const index = services.findIndex(s => s.id === serviceId);
+            if (index !== -1) {
+                services[index].price = newPrice;
+                localStorage.setItem('leonille_salon_services', JSON.stringify(services));
+                renderServices();
+                showNotification();
+            }
+        }
+
+        function showNotification() {
+            const msg = document.getElementById('save-msg');
+            msg.classList.remove('hidden');
+            setTimeout(() => {
+                msg.classList.add('hidden');
+            }, 3000);
+        }
+
+        // Category Filter
+        function filterCategory(cat) {
+            activeCategory = cat;
+            const buttons = document.querySelectorAll('.cat-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-brand-700', 'text-white');
+                btn.classList.add('bg-gray-100', 'text-gray-700');
+            });
+            event.target.classList.remove('bg-gray-100', 'text-gray-700');
+            event.target.classList.add('bg-brand-700', 'text-white');
+            renderServices();
+        }
+
+        // Search Filter
+        function filterServices() {
+            renderServices();
+        }
+
+        function resetFilters() {
+            document.getElementById('search-input').value = '';
+            filterCategory('all');
+        }
+
+        // Interactive WhatsApp Booking Form Handler
+        function handleBookingSubmit(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('book-name').value;
+            const service = document.getElementById('book-service').value;
+            const phone = document.getElementById('book-phone').value || 'Not provided';
+            const date = document.getElementById('book-date').value;
+            const time = document.getElementById('book-time').value;
+            const notes = document.getElementById('book-notes').value || 'None';
+
+            const message = `Hello *Leonille Beauty Saloon*, I would like to book an appointment!%0A%0A` +
+                            `👤 *Name:* ${encodeURIComponent(name)}%0A` +
+                            `💅 *Service:* ${encodeURIComponent(service)}%0A` +
+                            `📞 *Phone:* ${encodeURIComponent(phone)}%0A` +
+                            `📅 *Date:* ${encodeURIComponent(date)}%0A` +
+                            `⏰ *Time:* ${encodeURIComponent(time)}%0A` +
+                            `📝 *Notes:* ${encodeURIComponent(notes)}`;
+
+            const whatsappUrl = `https://wa.me/250781128904?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Lightbox Modal Functions
+        function openLightbox(imgSrc, captionText) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            const caption = document.getElementById('lightbox-caption');
+
+            img.src = imgSrc;
+            caption.textContent = captionText;
+            lightbox.classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.add('hidden');
+        }
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Initialize on load
+        window.onload = function() {
+            loadServices();
+        };
+    </script>
+</body>
+</html>
